@@ -1,0 +1,11 @@
+{
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "workbench.colorTheme": "Nord",
+    "security.workspace.trust.enabled": false,
+    "files.watcherExclude": {
+        "**/.bloop": true,
+        "**/.metals": true,
+        "**/.ammonite": true
+    },
+    "hexeditor.showOpenFileButton": true
+}

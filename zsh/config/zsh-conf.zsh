@@ -2,24 +2,25 @@ setopt notify
 setopt nobeep
 setopt autocd
 
-alias tp="trash put"
 alias ls="ls --color"
 alias ll="ls -alF "
 alias la="ls -A "
 alias l="ls -CF "
-alias tm="tmux"
-alias mk="make"
+
 alias mj="make -j \$(nproc)"
+
 alias rm="echo you must use del and delclean instead of rm else use \\rm"
-alias del="trash-put"
+alias tp="trash put"
+
 alias ip='ip --color=auto'
-alias grep= "grep --color=auto"
+
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+
 alias grep='grep --color=auto'
-alias less='less -R'
-# alias bat='batcat --theme base16 -p'
+
+alias bat='bat --paging=never'
 
 function clear-screen-and-scrollback() {
     echoti civis >"$TTY"
