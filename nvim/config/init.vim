@@ -83,8 +83,3 @@ function! SetUsLayout() ""
 endfunction
 autocmd InsertLeave * call SetUsLayout()
 let g:tex_flavor = "latex"
-
-set ts=4 sw=4 expandtab
-autocmd Filetype nix setlocal ts=2 sw=2
-autocmd Filetype scala setlocal ts=2 sw=2
-autocmd Filetype make setlocal noexpandtab

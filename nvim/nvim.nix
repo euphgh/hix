@@ -73,6 +73,7 @@
 
     # Nix
     nil
+    nixpkgs-fmt
 
     # Lua
     sumneko-lua-language-server

@@ -14,6 +14,5 @@ source ${./config/mytmux.conf}
       vim-tmux-navigator
       nord
     ];
-
   };
 }

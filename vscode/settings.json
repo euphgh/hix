@@ -1,11 +1,14 @@
 {
+    "update.mode": "none",
     "terminal.integrated.defaultProfile.osx": "zsh",
     "workbench.colorTheme": "Nord",
+    "editor.formatOnSave": true,
+    "editor.tabCompletion": "on",
     "security.workspace.trust.enabled": false,
-    "files.watcherExclude": {
-        "**/.bloop": true,
-        "**/.metals": true,
-        "**/.ammonite": true
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
     },
-    "hexeditor.showOpenFileButton": true
+    "extensions.ignoreRecommendations": true,
+    "nix.serverPath": "nil",
+    "nix.enableLanguageServer": true
 }

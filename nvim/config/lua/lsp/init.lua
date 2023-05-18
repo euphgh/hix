@@ -127,7 +127,7 @@ require 'lspconfig'.sqlls.setup { -- {{{
 	capabilities = capabilities,
 	on_attach = on_attach,
 }                              -- }}}
-require 'lspconfig'.rnix.setup { -- {{{
+require 'lspconfig'.nil_ls.setup { -- {{{
 	flags = lsp_flags,
 	capabilities = capabilities,
 	on_attach = on_attach,
