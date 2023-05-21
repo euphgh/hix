@@ -2,7 +2,7 @@
 {
   programs.vscode = {
     enable = lib.mkDefault true;
-    userSettings = (builtins.fromJSON (builtins.readFile ./settings.json));
+    # userSettings = (builtins.fromJSON (builtins.readFile ./settings.json));
     extensions = with pkgs.vscode-extensions; [
       arcticicestudio.nord-visual-studio-code
       asvetliakov.vscode-neovim

@@ -35,16 +35,16 @@ end, { remap = true }) --}}}
 if vim.g.vscode then
 else
         -- color theme {{{
-        require('nightfox').setup({
-                options = {
-                        transparent = true,
-                        styles = {
-                                comments = "italic",
-                                keywords = "bold",
-                                types = "italic,bold",
-                        }
-                }
-        })
+        -- require('nightfox').setup({
+        --         options = {
+        --                 transparent = true,
+        --                 styles = {
+        --                         comments = "italic",
+        --                         keywords = "bold",
+        --                         types = "italic,bold",
+        --                 }
+        --         }
+        -- })
         vim.g.nord_disable_background = true
         vim.cmd("colorscheme nord") -- }}}
         -- lualine{{{
@@ -237,13 +237,6 @@ highlight! link CmpItemKindUnit CmpItemKindKeyword
                 highlights = nord_hl,
         })
         --}}}
-        -- auto session{{{
-        require('auto-session').setup({
-                auto_session_create_enabled = false,
-                auto_save_enabled = true,
-                auto_restore_enabled = true,
-        })
-        vim.o.sessionoptions = "blank,buffers,curdir,folds,tabpages,winsize,winpos" -- }}}
         -- symbols outline {{{
         local opts = {
                 highlight_hovered_item = true,
@@ -312,56 +305,56 @@ highlight! link CmpItemKindUnit CmpItemKindKeyword
         require("symbols-outline").setup(opts) -- }}}
         require("todo-comments").setup {}
         require("lsp")
--- nvim-treesitter{{{
-require 'nvim-treesitter.configs'.setup {
-        sync_install = false,
-        ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
-        -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
+        -- nvim-treesitter{{{
+        require 'nvim-treesitter.configs'.setup {
+                sync_install = false,
+                ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
+                -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
 
-        highlight = {
-                -- `false` will disable the whole extension
-                enable = true,
-                -- Automatically install missing parsers when entering buffer
-                -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-                auto_install = true,
-                -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
-                disable = 'help',
-        },
-        rainbow = {
-                enable = true,
-                -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
-                extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-                max_file_lines = nil, -- Do not enable for files with more than n lines, int
-                -- colors = {}, -- table of hex strings
-                -- termcolors = {} -- table of colour name strings
+                highlight = {
+                        -- `false` will disable the whole extension
+                        enable = true,
+                        -- Automatically install missing parsers when entering buffer
+                        -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+                        auto_install = true,
+                        -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
+                        disable = 'help',
+                },
+                rainbow = {
+                        enable = true,
+                        -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
+                        extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+                        max_file_lines = nil, -- Do not enable for files with more than n lines, int
+                        -- colors = {}, -- table of hex strings
+                        -- termcolors = {} -- table of colour name strings
+                }
         }
-}
-vim.cmd([[
+        vim.cmd([[
 autocmd BufReadPost * TSDisable rainbow | TSEnable rainbow
 ]])
--- }}}
---telescope{{{
-require('telescope').load_extension('fzf')
-local builtin = require('telescope.builtin')
-function vim.getVisualSelection()
-        vim.cmd('noau normal! "vy"')
-        local text = vim.fn.getreg('v')
-        vim.fn.setreg('v', {})
+        -- }}}
+        --telescope{{{
+        require('telescope').load_extension('fzf')
+        local builtin = require('telescope.builtin')
+        function vim.getVisualSelection()
+                vim.cmd('noau normal! "vy"')
+                local text = vim.fn.getreg('v')
+                vim.fn.setreg('v', {})
 
-        text = string.gsub(text, "\n", "")
-        if #text > 0 then
-                return text
-        else
-                return ''
+                text = string.gsub(text, "\n", "")
+                if #text > 0 then
+                        return text
+                else
+                        return ''
+                end
         end
-end
 
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>cf', builtin.grep_string, {})
-vim.keymap.set('v', '<leader>cf', function()
-        builtin.grep_string({ default_text = vim.getVisualSelection() })
-end, {})
-vim.keymap.set('n', '<leader>mc', require "telescope".extensions.metals.commands, {})
-vim.cmd("nnoremap <leader>lg :Telescope live_grep<CR>")
---}}}
+        vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+        vim.keymap.set('n', '<leader>cf', builtin.grep_string, {})
+        vim.keymap.set('v', '<leader>cf', function()
+                builtin.grep_string({ default_text = vim.getVisualSelection() })
+        end, {})
+        vim.keymap.set('n', '<leader>mc', require "telescope".extensions.metals.commands, {})
+        vim.cmd("nnoremap <leader>lg :Telescope live_grep<CR>")
+        --}}}
 end

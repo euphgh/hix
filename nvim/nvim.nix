@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }: {
+{ pkgs, ... }: {
   programs.neovim = {
     enable = true;
     vimAlias = true;
@@ -15,15 +15,13 @@
       telescope-fzf-native-nvim
       telescope-nvim
       nvim-lspconfig
-      # fcitx-vim
+      fcitx-vim
       todo-comments-nvim
       hop-nvim
-      # nvim-treesitter.withPlugins ( plg: with plg; [ nix lua c cpp python ])
       nvim-ts-rainbow
       nvim-autopairs
       luasnip
       friendly-snippets
-      nvim-autopairs
       cmp-nvim-lsp
       cmp-buffer
       cmp-path
@@ -34,7 +32,6 @@
       vim-tmux-navigator
       vim-unimpaired
       vim-surround
-      auto-session
       nvim-metals
       markdown-preview-nvim
       (nvim-treesitter.withPlugins (plg: (with plg; [ 
@@ -46,9 +43,8 @@
       gitignore
       python
       scala
-      # sql
       json
-      # markdown
+      markdown
       yaml
       vim
       ])))
@@ -64,29 +60,22 @@
     fd
     ripgrep
     # systemverilog
-    # svls
-    # SQL
-    # sqls
+    svls
 
     # TeX
     # texlab
 
     # Nix
     nil
-    nixpkgs-fmt
 
     # Lua
     sumneko-lua-language-server
 
     # Python
-    # pyright
-
-    # scala
-    # coursier
-    # metals
+    pyright
 
     #markdown
-    # marksman
+    marksman
     ]++(with pkgs.llvmPackages_15; [
     clang-tools
   ]);

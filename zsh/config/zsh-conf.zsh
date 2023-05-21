@@ -37,5 +37,5 @@ bindkey "^O" accept-search
 bindkey '^[^L' clear-screen-and-scrollback
 bindkey -r '^L'
 
-[ -z "$TMUX"  ] && tmux new -A -s main -D
+# [ -z "$TMUX"  ] && tmux new -A -s main -D
 # }}}

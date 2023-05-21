@@ -13,6 +13,7 @@
     packages = with pkgs; [
       qq
       mill
+      xclip
       flameshot
       neofetch
       trashy
@@ -20,6 +21,7 @@
       rar
       bear
       bat
+      jdk17_headless
       # (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
 
       # # You can also create simple shell scripts directly inside your
