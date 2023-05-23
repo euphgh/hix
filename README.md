@@ -1,1 +1,1 @@
-# nix-hmconf
+# My nix home manager configuration
