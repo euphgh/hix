@@ -54,7 +54,7 @@ else
                         theme = 'auto',
                 },
                 sections = {
-                        lualine_c = { require('auto-session-library').current_session_name, '%f', vim.g['metals_status'] },
+                        lualine_c = { '%f', vim.g['metals_status'] },
                 },
         }
         -- }}}
