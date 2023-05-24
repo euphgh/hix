@@ -1,21 +1,17 @@
 { pkgs, ... }: {
   programs.neovim = {
     enable = true;
+    viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
     plugins = with pkgs.vimPlugins; [
       plenary-nvim
       nvim-web-devicons
-
-      nightfox-nvim
-      onenord-nvim
       nord-nvim
-
       lualine-nvim
       telescope-fzf-native-nvim
       telescope-nvim
       nvim-lspconfig
-      fcitx-vim
       todo-comments-nvim
       hop-nvim
       nvim-ts-rainbow
@@ -61,9 +57,6 @@
     ripgrep
     # systemverilog
     svls
-
-    # TeX
-    # texlab
 
     # Nix
     nil
