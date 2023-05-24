@@ -1,31 +1,57 @@
 { config, pkgs, lib, ... }:
 
 {
-  programs.direnv.enable = true;
-  programs.direnv.nix-direnv.enable = true;
-  programs.home-manager.enable = true;
+        programs.direnv.enable = true;
+        programs.direnv.nix-direnv.enable = true;
+        programs.home-manager.enable = true;
 
-  home = {
-    username = "hgh";
-    homeDirectory = "/home/hgh";
-    stateVersion = "22.11";
-    packages = with pkgs; [
-      mill
-      xclip
-      neofetch
-      trashy
-      bear
-      bat
-      jdk17_headless
-    ];
-  };
-
-  imports = (import ./nvim) ++ (import ./zsh);
-
-  home.sessionVariables = {
-    EDITOR = "nvim";
-    HTTP_PROXY = "http://127.0.0.1:7890";
-    HTTPS_PROXY = "http://127.0.0.1:7890";
-    ALL_PROXY = "http://127.0.0.1:7890";
-  };
+        home = {
+                username = "hgh";
+                homeDirectory = "/home/hgh";
+                stateVersion = "22.11";
+                packages = with pkgs; [
+                        fd
+                                nil
+                                bat
+                                mill
+                                bear
+                                xclip
+                                trashy
+                                neofetch
+                                verilator
+                                llvmPackages_15.libclang
+                                jdk17_headless
+                ];
+        };
+        programs.bash = {
+                enable = true;
+                profileExtra = ''
+                        export EDITOR=nvim
+                        export HTTP_PROXY=http://127.0.0.1:7890
+                        export HTTPS_PROXY=http://127.0.0.1:7890
+                        export ALL_PROXY=http://127.0.0.1:7890
+                        '';
+                sessionVariables = {
+                        EDITOR = "nvim";
+                        HTTP_PROXY = "http://127.0.0.1:7890";
+                        HTTPS_PROXY = "http://127.0.0.1:7890";
+                        ALL_PROXY = "http://127.0.0.1:7890";
+                };
+                shellAliases = {
+                        ls="ls --color";
+                        ll="ls -alF ";
+                        la="ls -A ";
+                        l="ls -CF ";
+                        mj="make -j \$(nproc)";
+                        rm="echo you must use del and delclean instead of rm else use \\rm";
+                        tp="trash put";
+                        ip="ip --color=auto";
+                        ".."="cd ..";
+                        "..."="cd ../..";
+                        "...."="cd ../../..";
+                        grep="grep --color=auto";
+                        cat="bat --paging=never";
+                };
+        };
+        imports = (import ./nvim);
 }

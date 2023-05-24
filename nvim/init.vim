@@ -71,16 +71,5 @@ function! FoldPair()
     endif
     exec l:high.",".l:low."fold"
 endfunction
-
 "}}}
 
-"plugin{{{
-:lua require('plugins')
-"}}}
-
-" input methor
-function! SetUsLayout() ""
-  silent !qdbus org.kde.keyboard /Layouts setLayout us > /dev/null
-endfunction
-autocmd InsertLeave * call SetUsLayout()
-let g:tex_flavor = "latex"
