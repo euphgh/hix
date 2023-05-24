@@ -20,7 +20,7 @@ alias ....='cd ../../..'
 
 alias grep='grep --color=auto'
 
-alias bat='bat --paging=never'
+alias cat='bat --paging=never'
 
 function clear-screen-and-scrollback() {
     echoti civis >"$TTY"
