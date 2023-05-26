@@ -27,15 +27,15 @@
                 enable = true;
                 profileExtra = ''
                         export EDITOR=nvim
-                        export HTTP_PROXY=http://127.0.0.1:7890
-                        export HTTPS_PROXY=http://127.0.0.1:7890
-                        export ALL_PROXY=http://127.0.0.1:7890
+                        export HTTP_PROXY=http://127.0.0.1:7891
+                        export HTTPS_PROXY=http://127.0.0.1:7891
+                        export ALL_PROXY=http://127.0.0.1:7891
                         '';
                 sessionVariables = {
                         EDITOR = "nvim";
-                        HTTP_PROXY = "http://127.0.0.1:7890";
-                        HTTPS_PROXY = "http://127.0.0.1:7890";
-                        ALL_PROXY = "http://127.0.0.1:7890";
+                        HTTP_PROXY = "http://127.0.0.1:7891";
+                        HTTPS_PROXY = "http://127.0.0.1:7891";
+                        ALL_PROXY = "http://127.0.0.1:7891";
                 };
                 shellAliases = {
                         ls="ls --color";
