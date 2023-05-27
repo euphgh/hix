@@ -5,5 +5,5 @@
                 username = "lt";
                 homeDirectory = "/home/lt";
         };
-        imports = [ ../home.nix ]
+        imports = [ ../home.nix ];
 }

@@ -5,5 +5,5 @@
                 username = "xyf";
                 homeDirectory = "/home/xyf";
         };
-        imports = [ ../home.nix ]
+        imports = [ ../home.nix ];
 }
