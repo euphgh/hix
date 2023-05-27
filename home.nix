@@ -6,8 +6,6 @@
         programs.home-manager.enable = true;
 
         home = {
-                username = "hgh";
-                homeDirectory = "/home/hgh";
                 stateVersion = "22.11";
                 packages = with pkgs; [
                         fd
@@ -15,6 +13,7 @@
                                 bat
                                 mill
                                 bear
+                                gnumake
                                 xclip
                                 trashy
                                 verilator

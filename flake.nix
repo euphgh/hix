@@ -19,15 +19,15 @@
         inherit pkgs;
         "hgh" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = [ ./home.nix ];
+          modules = [ ./user/hgh.nix ];
         };
         "lt" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = [ ./home.nix ];
+          modules = [  ./user/lt.nix ];
         };
         "xyf" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = [ ./home.nix ];
+          modules = [ ./user/xyf.nix ];
         };
     };
   };
