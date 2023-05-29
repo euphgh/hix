@@ -54,13 +54,11 @@
   xdg.configFile."nvim/init.vim".source = ./config/init.vim;
   xdg.configFile."nvim/lua".source = ./config/lua;
   home.packages = with pkgs; [
-    fd
-    ripgrep
     # systemverilog
     svls
 
     # TeX
-    # texlab
+    texlab
 
     # Nix
     nil
@@ -73,7 +71,5 @@
 
     #markdown
     marksman
-    ]++(with pkgs.llvmPackages_15; [
-    clang-tools
-  ]);
+    ];
 }

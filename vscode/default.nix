@@ -11,9 +11,6 @@
       ms-vscode.hexeditor
       mhutchie.git-graph
       mkhl.direnv
-      scala-lang.scala
-      scalameta.metals
-      redhat.java
     ];
   };
 }
