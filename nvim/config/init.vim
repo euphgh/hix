@@ -15,7 +15,6 @@ set encoding=utf-8
 set timeoutlen=500
 set autoindent
 set expandtab
-set clipboard+=unnamedplus
 let g:c_syntax_for_h = 1    " *.h filetype is c not cpp
 set exrc
 nnoremap <Left>  :echoe "Use h"<CR>
