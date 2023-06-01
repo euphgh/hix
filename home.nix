@@ -9,11 +9,12 @@
                 stateVersion = "22.11";
                 packages = with pkgs; [
                         fd
+                        btop
                                 nil
                                 bat
                                 mill
                                 bear
-                                gnumake
+                                stdenv.cc
                                 xclip
                                 trashy
                                 verilator
