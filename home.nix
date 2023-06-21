@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   programs.direnv.enable = true;
@@ -41,7 +41,54 @@
       grep = "grep --color=auto";
       cat = "bat --paging=never";
     };
-    logoutExtra =''jps | sed -E "/.*Jps.*/d" | sed -E "s/([0-9]+).*/kill -9 \1/" | source /dev/stdin'';
+  };
+  xdg.dataFile = {
+    BloopKill = {
+      executable= true;
+      text = ''
+        #!/bin/sh
+
+        # Find all Java processes.
+        jps_output=$(jps)
+
+        # Check if a process named "Main" exists.
+        if echo "$jps_output" | grep -q "Main"; then
+            echo "Process named 'Main' already exists, nothing to do."
+        else
+            # If "Main" process does not exist, check if a process named "Server" exists.
+            if echo "$jps_output" | grep -q "Server"; then
+                # If "Server" process exists, kill it.
+                server_pid=$(echo "$jps_output" | grep "Server" | cut -d " " -f 1)
+                echo "Process named 'Server' found with PID $server_pid. Killing it..."
+                kill "$server_pid"
+            else
+                # If neither "Main" nor "Server" process exists, do nothing.
+                echo "No 'Main' or 'Server' process found, nothing to do."
+            fi
+        fi
+      '';
+    };
+  };
+  systemd.user = {
+    timers."BloopKillTimer" = {
+      Unit = {
+        Description = "Timer of BloopKill Services";
+      };
+      Timer = {
+        OnUnitActiveSec = "30m";
+        OnActiveSec = "30m";
+        Unit = "BloopKill.service";
+      };
+      Install.WantedBy = [ "timers.target" ];
+    };
+    services.BloopKill = {
+      Unit = { Description = "Kill bloop when metals not run"; };
+      Service = {
+        Type = "oneshot";
+        ExecStart = "sh ${config.xdg.dataHome}/BloopKill";
+      };
+      Install.WantedBy = [ "default.target" ];
+    };
   };
   imports = (import ./nvim);
 }
