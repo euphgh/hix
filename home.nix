@@ -75,8 +75,8 @@
         Description = "Timer of BloopKill Services";
       };
       Timer = {
-        OnUnitActiveSec = "30m";
-        OnActiveSec = "30m";
+        OnUnitActiveSec = "30s";
+        # OnActiveSec = "30s";
         Unit = "BloopKill.service";
       };
       Install.WantedBy = [ "timers.target" ];
@@ -85,7 +85,7 @@
       Unit = { Description = "Kill bloop when metals not run"; };
       Service = {
         Type = "oneshot";
-        ExecStart = "sh ${config.xdg.dataHome}/BloopKill";
+        ExecStart = "/bin/sh ${config.xdg.dataHome}/BloopKill";
       };
       Install.WantedBy = [ "default.target" ];
     };
