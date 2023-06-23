@@ -22,6 +22,9 @@
       llvmPackages_15.libclang
       jdk17_headless
       ammonite
+      (pkgs.texlive.combine {
+        inherit (pkgs.texlive) scheme-full;
+      })
     ];
     stateVersion = "23.05";
   };
@@ -75,8 +78,7 @@
         Description = "Timer of BloopKill Services";
       };
       Timer = {
-        OnUnitActiveSec = "30s";
-        # OnActiveSec = "30s";
+        OnUnitActiveSec = "10m";
         Unit = "BloopKill.service";
       };
       Install.WantedBy = [ "timers.target" ];
