@@ -18,6 +18,7 @@
       stdenv.cc
       xclip
       trashy
+      ccache
       verilator
       llvmPackages_15.libclang
       jdk17_headless
@@ -35,7 +36,7 @@
       ll = "ls -alF ";
       la = "ls -A ";
       l = "ls -CF ";
-      mj = "make -j \$(nproc)";
+      mj = "make -j $(expr $(nproc) / 4)";
       tp = "trash put";
       ip = "ip --color=auto";
       ".." = "cd ..";
@@ -47,7 +48,7 @@
   };
   xdg.dataFile = {
     BloopKill = {
-      executable= true;
+      executable = true;
       text = ''
         #!/bin/sh
 
